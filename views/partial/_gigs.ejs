@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Gigs</div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Band</th>
+            <th>Venue</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% gigs.map(function(gig, index) { %>
+        <tr>
+            <td><%= (index + 1) %></td>
+            <td><a href="/band/<%= gig.band %>"><%= gig.band %></a></td>
+            <td><a href="/venue/<%= gig.venue %>"><%= gig.venue %></a></td>
+        </tr>
+    <% }); %>
+    </tbody>
+  </table>
+</div>
