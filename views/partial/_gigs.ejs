@@ -18,7 +18,7 @@
     <tbody>
     <% gigs.map(function(gig, index) { %>
         <tr>
-            <td><%= (index + 1) %></td>
+            <td><%= (page.skip + index + 1) %></td>
             <td><a href="/band/<%= gig.band %>"><%= gig.band %></a></td>
             <td><a href="/venue/<%= gig.venue %>"><%= gig.venue %></a></td>
             <td><%= gig.supports %></td>

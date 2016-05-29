@@ -42,12 +42,12 @@ app.use(function(req, res, next) {
 app.get('/:num(\\d+)?', function(req, res, next) {
     if (req.params.num) {
         req.data.page.num = +req.params.num;
-        req.data.page.skip = req.params.num * PAGE_SIZE;
+        req.data.page.skip = (req.params.num-1) * PAGE_SIZE;
     }
 
     Gig.count({}, function(err, count) {
         if (err) return console.log('Error:', err);
-        var totalPages = Math.floor(count / PAGE_SIZE);
+        var totalPages = Math.ceil(count / PAGE_SIZE);
 
         req.data.page.prev = req.data.page.num > 1 ? req.data.page.num - 1 : null;
         req.data.page.next = req.data.page.num < totalPages ? req.data.page.num + 1 : null;
