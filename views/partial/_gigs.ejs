@@ -36,3 +36,10 @@
     </tbody>
   </table>
 </div>
+
+<nav>
+  <ul class="pager">
+    <li class="<%= page.prev ? '' : 'disabled' %>"><a href="<%= page.prev ? '/'+page.prev : '' %>">Previous</a></li>
+    <li class="<%= page.next ? '' : 'disabled' %>"><a href="<%= page.next ? page.next : '' %>">Next</a></li>
+  </ul>
+</nav>

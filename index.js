@@ -24,16 +24,42 @@ app.use( bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use('/app/css', express.static(path.join(__dirname, '/app/css')));
 app.use('/app/js', express.static(path.join(__dirname, '/app/js')));
 
+var PAGE_SIZE = 10;
+
 app.use(function(req, res, next) {
     req.data = {
         gigs: [],
-        gig: {}
+        gig: {},
+        page: {
+            size: PAGE_SIZE,
+            num: 1,
+            skip: 0
+        }
     };
     next();
 });
 
-app.get('/', function(req, res, next) {
-    Gig.find(function(err, gigs) {
+app.get('/:num(\\d+)?', function(req, res, next) {
+    if (req.params.num) {
+        req.data.page.num = +req.params.num;
+        req.data.page.skip = req.params.num * PAGE_SIZE;
+    }
+
+    Gig.count({}, function(err, count) {
+        if (err) return console.log('Error:', err);
+        var totalPages = Math.floor(count / PAGE_SIZE);
+
+        req.data.page.prev = req.data.page.num > 1 ? req.data.page.num - 1 : null;
+        req.data.page.next = req.data.page.num < totalPages ? req.data.page.num + 1 : null;
+
+        req.data.page.totalCount = count;
+        req.data.page.totalPages = totalPages;
+    });
+
+    Gig.find()
+      .skip(req.data.page.skip)
+      .limit(req.data.page.size)
+      .exec(function(err, gigs) {
         if (err) {
             res.status(500).send('Shit wnet wrong!');
         } else {
