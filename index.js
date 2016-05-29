@@ -9,7 +9,7 @@ mongoose.connection.on('error', function (err) {
     console.log('Error:', err);
 });
 
-mongoose.connect('mongodb://localhost/gigdiary');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gigdiary');
 
 var app = express();
 app.set('view engine', 'ejs');
