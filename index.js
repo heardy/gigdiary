@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/gigdiary');
 var app = express();
 app.set('view engine', 'ejs');
 app.set('views', './views');
+app.set('port', (process.env.PORT || 3000));
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use( bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -148,8 +149,8 @@ app.use(function(req, res, next) {
     res.render('index', req.data);
 });
 
-app.listen(3000);
-console.log('Express server start on port 3000.');
+app.listen(app.get('port'));
+console.log('Express server start on port', app.get('port'));
 
 
 
