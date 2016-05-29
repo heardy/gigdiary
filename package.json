@@ -12,9 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
+    "moment": "^2.13.0",
     "mongoose": "^4.4.12"
   },
   "devDependencies": {

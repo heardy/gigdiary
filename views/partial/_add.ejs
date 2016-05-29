@@ -2,7 +2,7 @@
     <span style="color: green">successful i guess!!</span><br><br>
 <% } %>
 
-add gigs here
-<form method="post">
-    <button type="submit">Submit</submit>
+<form action="/add" method="post" enctype="application/x-www-form-urlencoded">
+  <% include ./_gig-form %>
+  <button type="submit" class="btn btn-default">Add</button>
 </form>

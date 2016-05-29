@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 // Create a database schema for our Post object
 var gigSchema = mongoose.Schema({
     band:String,
-    venue:String
+    venue:String,
+    date:Date
 });
 
 var Gig = mongoose.model('Gig', gigSchema);
