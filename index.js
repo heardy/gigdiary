@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
-var Gig = require('./models/Gig');
+var Gig = require('./models/gig');
 var moment = require('moment');
 
 mongoose.connection.on('error', function (err) {
