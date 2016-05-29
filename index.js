@@ -66,7 +66,6 @@ app.get('/search', function(req, res, next) {
             { band : { '$regex': '.*'+req.query.keyword+'.*', '$options': 'i' } },
             { venue : { '$regex': '.*'+req.query.keyword+'.*', '$options': 'i' } }
         ] })
-        .select('band venue')
         .exec(function (err, gigs) {
             if (err) console.log('Error:', err);
 
@@ -84,14 +83,13 @@ app.post('/add', function(req, res, next) {
     Gig.create({
         band: req.body.band,
         venue: req.body.venue,
+        supports: req.body.supports,
         date: date
     }, function (err) {
-        if (!err) return;
+        if (err) return console.log('Error:', err);
 
-        console.log('Error:', err);
+        next();
     });
-
-    next();
 })
 
 app.get('/edit/:id', function(req, res, next) {
@@ -112,6 +110,7 @@ app.post('/edit/:id', function(req, res, next) {
     Gig.update({ _id: req.params.id }, {
             band: req.body.band,
             venue: req.body.venue,
+            supports: req.body.supports,
             date: date
         },
         null, function (err, raw) {
@@ -122,6 +121,7 @@ app.post('/edit/:id', function(req, res, next) {
                 _id: req.params.id,
                 band: req.body.band,
                 venue: req.body.venue,
+                supports: req.body.supports,
                 date: date
             };
 

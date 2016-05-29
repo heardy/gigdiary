@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var gigSchema = mongoose.Schema({
     band:String,
     venue:String,
+    supports:String,
     date:Date
 });
 

@@ -9,6 +9,7 @@
             <th>#</th>
             <th>Band</th>
             <th>Venue</th>
+            <th>Supports</th>
             <th>Date</th>
             <th></th>
         </tr>
@@ -20,6 +21,7 @@
             <td><%= (index + 1) %></td>
             <td><a href="/band/<%= gig.band %>"><%= gig.band %></a></td>
             <td><a href="/venue/<%= gig.venue %>"><%= gig.venue %></a></td>
+            <td><%= gig.supports %></td>
             <td><%= gig.date ? moment(gig.date).calendar() : '' %></td>
             <td>
               <a class="btn btn-primary" href="/edit/<%= gig._id %>">
