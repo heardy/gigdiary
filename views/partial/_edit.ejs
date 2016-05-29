@@ -1,6 +1,6 @@
 <% var action = '/edit/' + gig._id; %>
 <% if (method == 'POST') { %>
-    <span style="color: green">edit successful i guess!!</span><br><br>
+    <div class="alert alert-success" role="alert">edit successful i guess!!</div>
 <% } %>
 
 <form action="<%= action %>" method="post" enctype="application/x-www-form-urlencoded">
