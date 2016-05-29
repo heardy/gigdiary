@@ -64,7 +64,8 @@ app.get('/venue/:venue', function(req, res, next) {
 app.get('/search', function(req, res, next) {
     Gig.find({ $or : [
             { band : { '$regex': '.*'+req.query.keyword+'.*', '$options': 'i' } },
-            { venue : { '$regex': '.*'+req.query.keyword+'.*', '$options': 'i' } }
+            { venue : { '$regex': '.*'+req.query.keyword+'.*', '$options': 'i' } },
+            { supports : { '$regex': '.*'+req.query.keyword+'.*', '$options': 'i' } }
         ] })
         .exec(function (err, gigs) {
             if (err) console.log('Error:', err);
