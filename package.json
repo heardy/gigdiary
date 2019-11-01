@@ -20,7 +20,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "moment": "^2.13.0",
-    "mongoose": "^4.4.12"
+    "mongoose": "^5.7.7"
   },
   "devDependencies": {
     "babel": "^6.5.2",
